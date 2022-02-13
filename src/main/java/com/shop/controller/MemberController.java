@@ -28,15 +28,6 @@ public class MemberController {
     }
 
     @PostMapping(value = "/new")
-    public String memberForm(MemberFormDto memberFormDto){
-
-        Member member = Member.createMember(memberFormDto, passwordEncoder);
-        memberService.saveMember(member);
-
-        return "redirect:/";
-    }
-
-    @PostMapping(value = "/new")
     public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
         // 검증하려는 객체의 앞에 @Valid 어노테이션을 선언 후 파라미터로 bindingResult 객체를 추가한다.
         // 검사 후 결과는 bindingResult에 담아주고 아래 if문으로 에러가 발견되면 회원 가입 페이지로 이동시킨다.
@@ -53,5 +44,16 @@ public class MemberController {
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping(value = "/login")
+    public String loginMember(){
+        return "/member/memberLoginForm";
+    }
+
+    @GetMapping(value = "/login/error")
+    public String loginError(Model model){
+        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
+        return "/member/memberLoginForm";
     }
 }
