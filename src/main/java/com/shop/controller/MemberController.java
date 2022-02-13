@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.shop.entity.Member;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import  javax.validation.Valid;
 
 @RequestMapping("/members")
 @Controller
@@ -30,6 +32,25 @@ public class MemberController {
 
         Member member = Member.createMember(memberFormDto, passwordEncoder);
         memberService.saveMember(member);
+
+        return "redirect:/";
+    }
+
+    @PostMapping(value = "/new")
+    public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
+        // 검증하려는 객체의 앞에 @Valid 어노테이션을 선언 후 파라미터로 bindingResult 객체를 추가한다.
+        // 검사 후 결과는 bindingResult에 담아주고 아래 if문으로 에러가 발견되면 회원 가입 페이지로 이동시킨다.
+        if(bindingResult.hasErrors()){
+            return "member/memberForm";
+        }
+
+        try {
+            Member member = Member.createMember(memberFormDto, passwordEncoder);
+            memberService.saveMember(member);
+        } catch (IllegalStateException e){
+            model.addAttribute("errorMessage", e.getMessage());
+            return "member/memberForm";
+        }
 
         return "redirect:/";
     }
