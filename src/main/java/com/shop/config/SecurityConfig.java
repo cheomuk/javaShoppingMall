@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -39,6 +40,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout")) // 로그아웃 URL 설정
                 .logoutSuccessUrl("/");                 // 로그아웃 성공 시 이동할 URL 설정
+
+        http.authorizeRequests()    // 시큐리티 처리에 HttpServletRequest를 이용한다.
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**")
+                .permitAll()        // permitAll()을 통해 모든 사용자가 인증없이 해당 경로(위 4개)에 접근할 수 있도록 설정함.
+                .mvcMatchers("/admin/**").hasRole("ADMIN")  // /admin으로 시작하는 경로는 ADMIN Role만 접근 가능함.
+                .anyRequest().authenticated();  // 위에 설정한 경로 외 나머지 경로는 전부 인증을 요구하도록 설정.
+
+        http.exceptionHandling()
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+        // 인증되지 않은 사용자가 리소스에 접근했을 때 수행되는 핸들러를 등록한다.
     }
 
     /*
@@ -49,5 +60,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
+        // static 디렉터리의 하위 파일은 인증을 무시하도록 설정한다.
     }
 }
