@@ -8,7 +8,7 @@
 - 백엔드 : 박현호
 
 ## 사용 툴 / 라이브러리
-- IntelliJ, STS 4, VSCode, Fork
+- IntelliJ, STS 4, VS Code, Fork
 
 ## 사용 언어
 - Java, HTML, CSS, JS
