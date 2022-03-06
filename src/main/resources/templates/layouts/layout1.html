@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>내셔널 지오그래픽</title>
 
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -12,7 +12,18 @@
 
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+    <link th:href="@{/css/base.css}" rel="stylesheet">
+    <link th:href="@{/css/fixed_button.css}" rel="stylesheet">
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <link th:href="@{/css/main_menu.css}" rel="stylesheet">
+    <link th:href="@{/css/photo_review.css}" rel="stylesheet">
+    <link th:href="@{/css/product_list.css}" rel="stylesheet">
+    <link th:href="@{/css/product_pop.css}" rel="stylesheet">
+    <link th:href="@{/css/searchform.css}" rel="stylesheet">
+    <link th:href="@{/css/slide_banner.css}" rel="stylesheet">
+
+    <!-- font awesome 가져오기 -->
+    <script src="https://kit.fontawesome.com/15ebb873a6.js" crossorigin="anonymous"></script>
 
     <th:block layout:fragment="script"></th:block>
     <th:block layout:fragment="css"></th:block>
@@ -22,9 +33,7 @@
 
     <div th:replace="fragments/header::header"></div>
 
-    <div layout:fragment="content" class="content">
-
-    </div>
+    <div layout:fragment="content" class="content"></div>
 
     <div th:replace="fragments/footer::footer"></div>
 

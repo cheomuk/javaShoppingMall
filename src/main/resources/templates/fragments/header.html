@@ -3,41 +3,287 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <div th:fragment="header">
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="/">Shop</a>
+    <div id="header">
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a class="nav-link" href="/admin/item/new">상품 등록</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a class="nav-link" href="/admin/items">상품 관리</a>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/cart">장바구니</a>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/orders">구매이력</a>
-                </li>
-                <li class="nav-item" sec:authorize="isAnonymous()">
-                    <a class="nav-link" href="/members/login">로그인</a>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/members/logout">로그아웃</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
-                <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+        <div class="top_header">
+
+            <!-- 상단 로고 그림 -->
+            <div class="logo">
+                <a href="/">
+                    <img th:src = "@{img/logo/index.png}" alt="상단 로고" title="상단 로고">
+                </a>
+            </div>
+
+            <!-- 검색 기능 -->
+            <div class="search_box">
+
+                <form>
+                    <div class="#">
+                        <div class="#">
+                            <!-- 검색창 -->
+                            <input type="text" id="search_form" name="keyword" class="top_search_text" title placeholder
+                                   autocomplete="off">
+                            <!-- 검색창 돋보기 버튼-->
+                            <input type="image" th:src = "@{img/icon/searching.png}" id="search_btn"
+                                   class="top_search_btn" title="검색" value="검색" alt="검색">
+                        </div>
+                        <div class="search_cont" style="display:none;">
+                            <div class="itembox">
+                                <ul class="tab_list">
+                                    <li class="recentkeyword">최근검색어</li>
+                                    <li class="hitkeyword">인기검색어</li>
+                                </ul>
+                                <div class="item" id="recentkeyword_item">
+                                    <div class="recent_box">
+                                        <dl class="js_recent_area">
+                                            <dt><h1>최근검색어</h1></dt>
+                                            <dd>최근 검색어가 없습니다.</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="search_top_all">
+                                        <button type="button" class="btn_top_search_close">
+                                            <strong>닫기</strong>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- 상단 고객 메뉴 -->
+            <div class="my_box">
+
+                <ul class="my_menu">
+
+                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="#">JOIN</a></li>
+                    <li>
+                        <div class="mypage">
+                            <span class="mypage_menu"><a href="">MYPAGE</a></span>
+                            <ul>
+                                <li><a href="#">주문조회</a></li>
+                                <li><a href="#">내정보수정</a></li>
+                                <li><a href="#">찜 리스트</a></li>
+                                <li><a href="#">정품등록</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">CART( <strong>0</strong> )</a></li>
+                    <li><a href="#">CS CENTER</a></li>
+                    <li><a href="#" target="_blank">매장개설문의</a></li>
+                    <li><a href="#" target="_blank">매장찾기</a></li>
+                    <li><a href="#">고객의소리</a></li>
+                    <li><a href="#">B2B</a></li>
+
+                </ul>
+
+            </div>
+
+        </div> <!-- 여기까지 로고, 검색창, 마이메뉴 -->
+
+        <!-- 상품메뉴 코드 -->
+        <div id="sub_header">
+
+            <!-- 절대 위치의 메뉴버튼 구현 X -->
+
+            <!-- 서브메뉴 검은색 박스 -->
+            <div class="submenu_box">
+
+                <!-- 서브 메뉴 리스트-->
+                <!-- .submenu의 li가 리스트 목록 sub1, sub2, sub3이 숨겨진 목록-->
+                <ul class="submenu">
+                    <!-- 이벤트 -->
+                    <li><a href="#" class="#">EVENTS</a></li>
+                    <!-- 신상품 -->
+                    <li><a href="#" class="#">NEW ARRIVALS</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">22SS</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">APPAREL</a></li>
+                                    <li><a href="#" class="#">BAG</a></li>
+                                    <li><a href="#" class="#">ACC</a></li>
+                                    <li><a href="#" class="#">SHOES</a></li>
+                                    <li><a href="#" class="#">KIDS</a>
+                                        <ul class="sub3">
+                                            <li><a href="#" class="#">APPAREL</a></li>
+                                            <li><a href="#" class="#">BAG</a></li>
+                                            <li><a href="#" class="#">SHOES</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><a href="#" class="#">21FW</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">APPAREL</a></li>
+                                    <li><a href="#" class="#">BAG</a></li>
+                                    <li><a href="#" class="#">SHOES</a></li>
+                                    <li><a href="#" class="#">ACC</a></li>
+                                    <li><a href="#" class="#">KIDS</a>
+                                        <ul class="sub3">
+                                            <li><a href="#" class="#">APPAREL</a></li>
+                                            <li><a href="#" class="#">BAG&amp;ACC</a></li>
+                                            <li><a href="#" class="#">SHOES</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><a href="#" class="#">CAMPING</a></li>
+                        </ul>
+                    </li>
+                    <!-- 남성 -->
+                    <li><a href="#" class="#">MEN</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">OUTER</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">다운</a></li>
+                                    <li><a href="#" class="#">베스트</a></li>
+                                    <li><a href="#" class="#">자켓</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">TOP</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">맨투맨</a></li>
+                                    <li><a href="#" class="#">후디</a></li>
+                                    <li><a href="#" class="#">티셔츠</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">BOTTOM</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">팬츠</a></li>
+                                    <li><a href="#" class="#">트레이닝 팬츠</a></li>
+                                    <li><a href="#" class="#">반바지</a></li>
+                                    <li><a href="#" class="#">레깅스</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">SURF WEAR</a></li>
+                        </ul>
+                    </li>
+                    <!-- 여성 -->
+                    <li><a href="#" class="#">WOMEN</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">OUTER</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">다운</a></li>
+                                    <li><a href="#" class="#">베스트</a></li>
+                                    <li><a href="#" class="#">자켓</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">TOP</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">맨투맨</a></li>
+                                    <li><a href="#" class="#">후디</a></li>
+                                    <li><a href="#" class="#">티셔츠</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">BOTTOM</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">팬츠</a></li>
+                                    <li><a href="#" class="#">트레이닝 팬츠</a></li>
+                                    <li><a href="#" class="#">반바지</a></li>
+                                    <li><a href="#" class="#">레깅스</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">SURF WEAR</a></li>
+                        </ul>
+                    </li>
+                    <!-- 유아 -->
+                    <li><a href="#" class="#">KIDS</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">OUTER</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">다운</a></li>
+                                    <li><a href="#" class="#">베스트</a></li>
+                                    <li><a href="#" class="#">자켓</a></li>
+                                    <li><a href="#" class="#">플리스</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">TOP</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">맨투맨</a></li>
+                                    <li><a href="#" class="#">후디</a></li>
+                                    <li><a href="#" class="#">티셔츠</a></li>
+                                    <li><a href="#" class="#">SET-UP</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">BOTTOM</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">팬츠</a></li>
+                                    <li><a href="#" class="#">반바지</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">BAG</a></li>
+                            <li><a href="#" class="#">SHOES</a></li>
+                            <li><a href="#" class="#">ACC</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">전체보기</a></li>
+                                    <li><a href="#" class="#">모자</a></li>
+                                    <li><a href="#" class="#">기타 액세서리</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- 가방 -->
+                    <li><a href="#" class="#">BAG</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">전체보기</a></li>
+                            <li><a href="#" class="#">백팩</a></li>
+                            <li><a href="#" class="#">힙색</a></li>
+                            <li><a href="#" class="#">크로스백</a></li>
+                            <li><a href="#" class="#">토트백</a></li>
+                            <li><a href="#" class="#">워터백</a></li>
+                        </ul>
+                    </li>
+                    <!-- 신발 -->
+                    <li><a href="#" class="#">SHOES</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">전체보기</a></li>
+                            <li><a href="#" class="#">스니커즈</a></li>
+                            <li><a href="#" class="#">슬리퍼 &amp; 샌들</a></li>
+                            <li><a href="#" class="#">SEASON ITEM</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="#">ACC</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">전체보기</a></li>
+                            <li><a href="#" class="#">모자</a>
+                                <ul class="sub2">
+                                    <li><a href="#" class="#">전체보기</a></li>
+                                    <li><a href="#" class="#">CAP</a></li>
+                                    <li><a href="#" class="#">HAT</a></li>
+                                    <li><a href="#" class="#">BEANIE</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="#">기타 액세서리</a></li>
+                        </ul>
+                    </li>
+                    <!-- 캐리어 -->
+                    <li><a href="#" class="#">SUITCASES</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">캐리어</a></li>
+                            <li><a href="#" class="#">캐리어 세트</a></li>
+                            <li><a href="#" class="#">기내용</a></li>
+                            <li><a href="#" class="#">화물용</a></li>
+                        </ul>
+                    </li>
+                    <!-- 캠핑 -->
+                    <li><a href="#" class="#">CAMPING</a>
+                        <ul class="sub1">
+                            <li><a href="#" class="#">텐트</a></li>
+                            <li><a href="#" class="#">테이블 &amp; 체어</a></li>
+                            <li><a href="" class="">매트</a></li>
+                            <li><a href="" class="">타프</a></li>
+                            <li><a href="" class="">캠핑 아이템</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </nav>
+    </div>
 </div>
 
 </html>
