@@ -3,7 +3,160 @@
       xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
       layout:decorate="~{layouts/layout1}">
 
+
 <div layout:fragment="content">
-    <h1>메인 페이지입니다.</h1>
+    <script type="text/javascript" th:src="@{js/slide_banner.js}"></script><!-- 슬라이드 배너에 쓰이는 자바 스크립트 -->
+    <!--================== 광고 슬라이드바 ==================-->
+    <div class="slidebanner_container" id="slide_box">
+
+        <div class="slide">
+            <a href="#">
+                <img th:src = "@{img/slide/slide_banner1.jpg}">
+            </a>
+        </div>
+
+        <div class="slide">
+            <a href="#">
+                <img th:src = "@{img/slide/slide_banner2.jpg}">
+            </a>
+        </div>
+
+        <div class="slide">
+            <a href="#">
+                <img th:src = "@{img/slide/slide_banner3.jpg}">
+            </a>
+        </div>
+
+        <!-- 이전/다음 버튼 -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+
+    <!-- 현재 표시되는 슬라이드 배너 표시해주는 점모양 버튼 -->
+    <div class='dotlist'>
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+
+    <!--========================= 포토 리뷰 부분 ==========================-->
+    <div id="photo_review">
+
+        <div class="review_head">
+            <p class="main_head">PHOTO REVIEW</p>
+            <p class="sub_head">포토리뷰 작성 이벤트</p>
+        </div>
+
+        <div class="review_box">
+
+            <div class="view1 review">
+                <a href="#">
+                    <img class='review_img' src="https://naturestore.co.kr/data/plus_review/1000006253/t/square_41f05a22f83877ce">
+                </a>
+                <script>
+          document.write("<br><br><b>내셔널지오그래픽 N214USW960 폴리카터 빅 로고 맨투맨 티셔츠 CARBON BLACK<br><br></b>");
+
+          var rating = 5;
+
+          for (i = 1; i <= 5; i++) {
+            document.write("<p id = 'star'>★</p>")
+          }
+          document.write("<b> " + rating + "</b><br>")
+
+          document.write("아주아주 좋다고하네요 선물했습니다 ㅋ<br>");
+        </script>
+            </div>
+        </div>
+    </div>
+    <!--================== 포토 리뷰 더보기 버튼 ==================-->
+    <a href="#">
+        <div id="btn_more_review">
+            <p onclick="javascript:location.href='addview';">더보기</p>
+        </div>
+    </a>
+
+    <!--================== 상품 리스트 목록 ==================-->
+
+    <div id="product_list">
+        <!--팝업창-->
+        <div class="product_box product_hidden">
+
+            <div class="product_overlay"></div>
+
+            <div class="product_info">
+                <div class="info_img">
+                    <img src=" ">
+                </div>
+
+                <div class="info_ment">
+
+                    <div class="info_name"><span><h3> </h3></span></div>
+                    <div class="info_explain"><span><p> </p></span></div>
+
+                    <div class="info_size">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
+
+                <div class="btn_box">
+                    <button class="product_btn btn_cart">장바구니</button>
+                    <button class="product_btn btn_buy">구입하기</button>
+                    <button class="product_btn btn_recommend">추천하기</button>
+                </div>
+
+                <a class="product_outb"><img src="https://www.naturestore.co.kr/data/skin/front/the_living/img/common/layer/btn_plus_review_close.png"></a>
+            </div>
+
+        </div>
+
+        <!--팝업창 끝-->
+
+        <figure class="product">
+
+            <div class="product_img">
+                <img th:src = "@{img/item/women_test.jpg}">
+            </div>
+
+            <figcaption class="product_ment">
+                <span><h1>N_여성_카키_롱슬리브</h1></span>
+                <span><p>루즈핏의 정석 카키색으로 덮어보세요. ABCDEFGHIJKLMNOPQRSTUVWHYZ
+          ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ
+          ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ
+          ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ
+          ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ
+          ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ ABCDEFGHIJKLMNOPQRSTUVWHYZ
+          </p></span>
+            </figcaption>
+
+            <div class ="item_src" style="display: none;">
+                <span>사이즈: s, m
+                    색상: 카키
+                    가격: 15000원
+                </span>
+            </div>
+
+        </figure>
+    </div>
+
+    <!-- 창민 추가 -- ========== 우하단 고정 버튼 =========== -->
+
+    <!-- top 버튼 -->
+    <a class = 'top_button' >
+        <img th:src = "@{img/icon/top.png}">
+    </a>
+
+    <!-- 카카오톡 채널 버튼 -->
+    <a class = 'kakao_button' href = '#'>
+        <img th:src = "@{img/icon/kakao_p.png}">
+    </a>
+
+    <script type="text/javascript" th:src="@{js/popup.js}"></script> <!-- 팝업창 스크립트 가져오기 -->
+    <script type="text/javascript" th:src="@{js/searchform.js}"></script> <!-- 검색창 스크립트 가져오기 -->
+    <script type="text/javascript" th:src="@{js/fixed_button.js}"></script><!-- 우하단 고정 버튼에 쓰인 자바 스크립트 -->
 </div>
+
 </html>

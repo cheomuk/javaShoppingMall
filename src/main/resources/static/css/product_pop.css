@@ -1,0 +1,123 @@
+#product_list .product_box { /*팝업창 위치*/
+  display: block;
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#product_list .product_overlay { /*팝업창 뒤 회색배경*/
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+}
+#product_list .product_info { /*팝업창*/
+  display: block;
+  position:absolute;
+  width: 700px;
+  min-height: 500px;
+  text-align: center;
+  background-color: white;
+}
+/* 팝업창 디자인 */
+#product_list .info_ment {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 15px 0 15px 0;
+}
+#product_list .info_ment .info_name {
+  font-size: 20px;
+  font-weight: 700;
+  display: block;
+  padding: 10px 20px 20px 20px;
+}
+#product_list .info_ment .info_explain {
+  display: block;
+  height:100px;
+  padding: 0 20px 20px 20px;
+  word-break:break-all;
+  text-align: left;
+  overflow: auto;
+  -ms-overflow-style: none;
+}
+#product_list .info_size {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 20px 10px 20px ;
+  background: #f8f8f8;
+  line-height: 35px;
+}
+#product_list .info_ment > .info_explain::-webkit-scrollbar {
+  display: none;
+}
+#product_list .info_img img {
+  max-width: 600px;
+  max-height: 700px;
+  object-fit:contain;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid grey;
+}
+
+/* 팝업 나가기 버튼 디자인 */ 
+#product_list .btn_box {
+  padding: 10px 10px 10px 10px;
+}
+.product_btn {
+  width: 80px;
+  height: 40px;
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+}
+#product_list .product_outb { 
+  display: inline-block;
+  all:unset;
+  background-color: rgba(0, 0, 0, .0);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: -46px;
+}
+/* 장바구니, 추천하기, 구매 버튼 디자인*/
+.btn_cart {
+  color: #8a8a8a;
+  font-size: 15px;
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+.btn_buy {
+  color: #8a8a8a;
+  font-size: 15px;
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+.btn_recommend {
+  color: #ffffff;
+  font-size: 15px;
+  border: 1px solid #dd3d42;
+  background: #dd3d42;
+  text-align: center;
+}
+.btn_buy:hover {
+  background: rgb(222, 222, 222);
+}
+.btn_cart:hover {
+  background: rgb(222, 222, 222);
+}
+.btn_recommend:hover {
+  background: #c0363a;
+} 
+#product_list .product_hidden{ /* 스크립트에 사용될 평시 display:none */
+  display:none; 
+}

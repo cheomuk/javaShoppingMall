@@ -1,0 +1,58 @@
+/* 상품 리스트 css*/
+
+#product_list figure { /* 초기화 */
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+#product_list { /* 상품 전체 공간 할당 */
+  display: flex;
+  width: 1440px;
+  height: auto;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#product_list .product { /* 상품 갱당 박스 부피 및 좌측 정렬 */
+  width:450px;
+  float:left;
+  text-align: center;
+  padding: 0 15px 65px 15px ;
+}
+#product_list .product_img { /* 상품 이미지 배경 */
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+  flex-direction: row; /* default: row */
+  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
+  width:100%;
+  height:600px;
+  overflow: hidden; /* 이미지 넘치면 숨김 */
+  background-color: azure;
+}
+#product_list .product_img img { /* 상품 이미지 설명 */
+  width: 100%;
+  object-fit: contain;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+#product_list .product div:hover img { /* 커서 호버시 이미지 확대기능 */
+  transform: scale(1.2);
+}
+#product_list .product_ment { /*포스터 내 글씨들*/
+  max-width:450px;
+  padding: 0 15px;
+  text-align: left;
+}
+#product_list .product_ment p { /* 설명란 글씨 넘침 처리 1줄까지*/
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+} 
+#product_list .product_ment h1 { /* <h> 대문 글씨 스타일*/
+  margin-bottom: 15px;
+  margin-top: 25px;
+  line-height: 35px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  font-size: 1.8em;
+}

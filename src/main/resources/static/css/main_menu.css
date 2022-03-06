@@ -1,0 +1,301 @@
+/* 헤더부분 전체 */
+#header {
+  position:relative; 
+}
+
+.top_header {
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* 상단 로고 설정 */
+#header .logo { padding:30px 0 30px 40px; }
+#header .logo img { width:210px; }
+
+/* 검색창 스타일 */
+#header .search_box { /* 상단 검색창 틀 위치 */
+  position: absolute;
+  top: 25px;
+  left: 35px;
+  margin-left: 319px;
+  background-color: #fff;
+  z-index: 110;
+}
+#search_form { /* 검색창 서식 */
+  border: none 0;
+  vertical-align: top;
+  font-size: 20px;
+  font-weight: 600;
+  outline:none;
+  height: 35px;
+  padding: 5px 45px 5px 15px;
+  box-sizing: border-box;
+  background: #fff;
+  border-bottom: 2px solid #404040;
+  color: #000;
+}
+#search_btn { /*검색창 돋보기 아이콘 스타일*/
+  vertical-align: top;
+  height: 35px;
+  box-sizing: border-box;
+  position:absolute;
+  border-bottom: 2px solid #404040;
+}
+
+/* 상단 고객 메뉴 스타일 */
+.my_box { /* 고객 메인메뉴박스 */
+  position: absolute !important;
+  top: 41px;
+  right: 40px;
+  width: 600px;
+  height: 29px;
+}
+.my_menu { /* 상단 고객 메뉴 목록 */
+  float: right;
+  position: relative;
+  margin: 0;
+  line-height: 1;
+  z-index: 150; 
+}
+.my_menu > li { /* 상단 고객 메뉴 레이아웃 설정 */
+  float:left; 
+  position:relative;
+}
+.my_menu > li a {
+  display:inline-block; 
+  padding:4px 0 4px 15px; 
+  color:#000; 
+  font-size:12px;
+}
+
+/* 마이페이지 서브 메뉴 스타일*/
+.mypage_menu:hover ul{
+  display:inline-block;
+  position:absolute;
+  background-color: white;
+  border: 1px solid gray;
+  z-index:150;
+}
+.mypage ul {
+  /* position: relative; */
+  margin:0px;
+  border:0px;
+  padding: 5px 0px;
+}
+
+/* 마이메뉴 드롭다운 블록 구현(디자인, 보이기X) */
+.mypage ul {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 86px;
+  padding: 3px 0 3px 0;
+  border: 1px solid #999999;
+  background: #ffffff;
+  z-index: 40;
+}
+
+ul ul {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+/* 마우스 올리면 드롭다운 블록으로 보이기 */
+.mypage:hover ul{
+  display: block;
+}
+
+/* 드롭다운 내부 목록a태그 디자인 */
+.mypage ul a {
+  display: inline-block;
+  width: 70px;
+  padding: 6px 5px 7px 10px;
+  color: #000;
+  font-size: 12px;
+}
+
+.mypage ul a:hover {
+  background: yellow;
+}
+
+/*전체메뉴 아이콘*/
+
+#sub_header .allmenu_box { /* 전체메뉴 아이콘 위치 설정 */
+  width:100%;
+  height:0;
+  position: absolute;
+  left: 37px;
+}
+#sub_header .allmenu_box label {
+  text-align: center;
+}
+.allmenu-list div { /* 목록박스 하단 경계선 */
+  border-bottom: 1px solid rgb(202, 202, 202);
+  width: 100px;
+  padding-bottom: 5px;
+}
+.allmenu-list li { /* 목록간 간격 */
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.point { /* 주목록 폰트 두껍게 */
+  color: black;
+  font-weight: 900;
+}
+
+/* 전체메뉴는 체크박스 표시를 통해 열고 닫음 & 그 반응을 통한 디자인적 요소가 포함되어있음 */
+#menuicon { display: none; } /* 체크 박스 안보이게 */
+#menuicon + label { /* 전체메뉴 아이콘 디자인 */
+  display: block;
+  width: 35px;
+  height: 30px;
+  position: absolute;
+  top: 9.5px;
+  z-index: 300;
+  cursor:pointer;
+}
+#menuicon + label > span { /* 전체메뉴 아이콘 세부디자인과 자연스럽게 아이콘 변경 가능한 css*/
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  border-radius: 30px;
+  background: white;
+  transition: all 0.35s;
+}
+/* span으로 만든 아이콘 위치 및 변형을 위한 값 주기 */
+#menuicon:checked + label span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 2;
+}
+#menuicon:checked + label span:nth-child(2) {
+  z-index: 2;
+  opacity: 0;
+}
+#menuicon:checked + label span:nth-child(3) {
+  z-index: 2;
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+#menuicon + label span:nth-child(1) { top: 0; }
+#menuicon + label span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+#menuicon + label span:nth-child(3) { bottom: 0; }
+
+.allmenu {
+  width: 100%;
+  height: 680px;
+  background: black;
+  position: absolute;
+  top: 52px;
+  left: 0;
+  z-index: 0;
+  transition: all 0.35s;
+}
+#menuicon:checked + label + div {
+  top: 52px;
+  height: 550px;
+  z-index: 4;
+}
+
+
+/* 검은바 메뉴 스타일*/
+#sub_header { /* 박스 크기 및 색깔 설정 */
+  background-color: black;
+  height: 50px;
+  width:100%;                 /* 100%만큼 공간생성 */
+  margin-left:0px;            /* 왼쪽 여백 0px */
+  margin-top: -21; /*카테고리 박스 상단까지의 거리 21px*/
+}
+#sub_header .submenu { /* 카테고리 우측 정렬 */
+  font-size:0;                /* 폰트 초기화 */
+  display: flex; 
+  justify-content: flex-end; /* 우측 정렬 */
+}
+#sub_header .submenu > li {
+  position:relative;
+  display:inline-block;
+  vertical-align:top;
+  text-align: center;
+  cursor: pointer;
+  min-width: 130px; 
+  right:0;                                       
+}
+#sub_header .submenu > li > a { /* 디스플레이되있는 a태그 카테고리 글씨 및 박스 설정 */
+  padding:15px 30px; 
+  min-width:70px; 
+  font-size:12px; 
+  font-weight:bold; 
+  text-align:center; 
+  line-height:50px; 
+  color:#fff;
+  white-space: nowrap;
+}
+
+/* sub1 기본 설정 */
+#sub_header .submenu .sub1 {              
+  display:none;                    /* 처음엔 보이지않게 */
+  position:absolute;               /* 포지션 절대값 */
+  top:50px; left:0;                /* 위로부터 50px 밀기 */
+  width:100%;                      /* 가로넓이 160px */
+  background:rgba(0,0,0,.6);     /* 색: 블랙 투명도60% */
+  z-index:100;                     /* 창이 가장 먼저보이게 z-index높게 설정(100정도면 제일 위에 보이겠지) */
+}
+#sub_header .submenu .sub1 > li { /* sub1 ul에 속한 li의 위치 설정 */
+  position:relative;              /* 포지션 상대값 */
+  text-align: left;
+}
+#sub_header .submenu .sub1 > li > a { /* sub1 a 위치 및 폰트 설정 */
+  display: block;                 /* 블록으로 설정 */
+  padding:5px 10px 7px 19px;      /* 패딩 설정 */
+  font-size:12px;                 /* 글씨 크기 설정 */
+  color:#e7e7e7;                /* 글씨 기본 색: 하양 */
+}
+#sub_header .submenu .sub1 > li:hover > ul { /* sub1의 ul 블럭으로 보이게 설정 */
+  display: block;
+}
+/* sub2 기본 설정 */
+#sub_header .submenu .sub2 {
+  display:none;                   /* 처음엔 보이지않게 */
+  position:absolute;              /* 포지션 절대값 */
+  top:0; left:100%;               /* 100% 밀기 */
+  width:160px;                    /* 가로넓이 160px */
+  background:rgba(0,0,0,.6);    /* 색: 블랙 투명도60% */
+  z-index:100;                    /* 창이 가장 먼저보이게 z-index높게 설정(100정도면 제일 위에 보이겠지) */
+}
+#sub_header .submenu .sub2 > li { /* sub2 ul에 속한 li의 위치 설정 */
+  position: relative;             /* 포지션 상대값 */
+}
+#sub_header .submenu .sub2 > li > a { /* li 안의 a태그 설정 */
+  display: block;                 /* 블록으로 설정 */
+  padding:5px 10px 7px 19px;      /* 패딩 설정 */
+  font-size:12px;                 /* 글씨 크기 설정 */
+  color:#e7e7e7;                /* 글씨 기본 색: 하양 */
+}
+#sub_header .submenu .sub2 > li:hover ul { /* sub2의 ul 블럭으로 보이게 설정 */ 
+  display: block;
+}
+/* sub3의 기본설정 */
+#sub_header .submenu .sub3 {              
+  display:none;                   /* 처음엔 보이지않게 */
+  position:absolute;              /* 포지션 절대값 */
+  top:0; left:100%;               /* 100% 밀기 */
+  width:160px;                    /* 가로넓이 160px */
+  background:rgba(0,0,0,.6);    /* 색: 블랙 투명도60% */
+}
+#sub_header .submenu .sub3 > li { /* sub3 ul에 속한 li의 위치 설정 */
+  position: relative;             /* 포지션 상대값 */
+}
+#sub_header .submenu .sub3 > li > a { /* li 안의 a태그 설정 */
+  display: block;                 /* 블록으로 설정 */
+  padding:5px 10px 7px 19px;      /* 패딩 설정 */
+  font-size:12px;                 /* 글씨 크기 설정 */
+  color:#e7e7e7;                /* 글씨 기본 색: 하양 */
+}
+
+/* submenu 부속기능*/
+#sub_header .submenu > li:hover > a { color:#ffdb00; } /* .submenu 커서 올릴때 폰트 색*/
+#sub_header .submenu > li:hover > ul { display: block; }
+#sub_header .submenu .sub1 li:hover { background-color: #545454; color:#ffffff } /* 드롭다운 커서 올렸을대 색깔 변경*/

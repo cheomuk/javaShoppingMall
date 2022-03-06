@@ -1,0 +1,31 @@
+/* ========== 우하단 고정 버튼 css ========== */
+
+/* 전체 고정 버튼에 적용 */
+.kakao_button {
+    position: fixed;
+    right: 40px;
+    width: 42px;
+    height: 42px;
+    z-index: 150;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.top_button {
+    position: fixed;
+    right: 40px;
+    width: 42px;
+    height: 42px;
+    z-index: 150;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* 카카오채널 버튼 */
+.kakao_button { bottom: 60px; }
+
+/* 카카오채널 이미지 크기 조정 */
+.kakao_button > img { width: 42px; height: 42px; }
+
+/* TOP 버튼 */
+.top_button { bottom: 130px; display: none; }

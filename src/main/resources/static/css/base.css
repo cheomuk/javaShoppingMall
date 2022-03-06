@@ -1,0 +1,28 @@
+/*페이지 기본 설정*/
+
+/*값 초기화*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {
+  margin:0;
+  padding:0;
+}
+/*리스트 태그 점 삭제*/
+dl,ul,ol,li { list-style: none; }
+
+/*색 초기화*/
+body { background:#fff; min-width: 1440px;}
+
+/*폰트 동일 설정*/
+body,th,td,input,select,textarea,button {
+  font-family:'Montserrat', sans-serif, 'Noto Sans KR', Malgun Gothic,"맑은 고딕",AppleGothic,Dotum,"돋움"; 
+  font-size:14px; 
+  color:#000; 
+  font-weight: 400; 
+  line-height: 1.5;
+}
+
+/*A태그 밑줄 제거*/
+a { color:#333; text-decoration:none; }
+a:active, a:hover { text-decoration:none; }
+
+/*이미지 정렬 초기화*/
+img{ border: 0 none; vertical-align: top; }

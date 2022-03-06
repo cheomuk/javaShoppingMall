@@ -1,0 +1,54 @@
+/* =======================포토 리뷰 화면 구성============================== */
+
+
+#photo_review { /* 포토 리뷰 크기 지정 */
+  width: 1440px;
+  margin: 0 auto;
+  min-width: 1440px;
+  height: 630px;
+  box-sizing: border-box;
+}
+#photo_review .review_head { /* 포토리뷰 대문 박스 */
+  text-align: center;
+  padding: 40px;
+  font-weight:bold;
+  line-height:1.3;
+  margin-top: 0px;
+}
+/* 이벤트 대문 폰트 크기 설정 */
+#photo_review .review_head .main_head { font-size: 30px; }
+#photo_review .review_head .sub_head { font-size: 18px; }
+
+
+#photo_review .review_box { /* 리뷰목록 가운데 정렬 및 전체 폰트 좌측 정렬*/
+  display: inline-block;
+  margin:0 auto;
+}
+#photo_review .review_box .review { /* 리뷰 목록 가로 정렬 및 각각 크기 */
+  float: left;
+  width:202px;
+  padding: 19px;
+}
+
+#photo_review img.review_img { /* 포토 리뷰에 넣을 이미지 크기 조정 */
+  max-width:202px;
+  max-height:202px;
+  overflow: hidden;
+  background-color: gold; /* 박스 색상 지정 알아서 박스 잘 맞출 것 */
+}
+
+#photo_review #star { /* 평점으로 쓸 별의 색깔 변경해주기 */
+  color : rgb(255, 166, 0);
+  display:inline; 
+}
+
+/* 포토 리뷰 '더보기' 버튼 */
+#btn_more_review {
+  width: 200px;
+    margin: 0 auto 100px auto;
+    padding: 10px;
+    background-color: #111;
+    box-sizing: border-box;
+    text-align: center;
+    color: #f7f7f7;
+}
