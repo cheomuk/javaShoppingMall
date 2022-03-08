@@ -9,12 +9,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
 }
 #product_list .product_overlay { /*팝업창 뒤 회색배경*/
   position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
-  height: 100%;
+  height: 200%; 
 }
 #product_list .product_info { /*팝업창*/
   display: block;
@@ -56,7 +58,7 @@
 #product_list .info_ment > .info_explain::-webkit-scrollbar {
   display: none;
 }
-#product_list .info_img img {
+#product_list .info_img img { /**/
   max-width: 600px;
   max-height: 700px;
   object-fit:contain;
