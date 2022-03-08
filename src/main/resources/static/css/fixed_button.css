@@ -1,7 +1,7 @@
 /* ========== 우하단 고정 버튼 css ========== */
 
 /* 전체 고정 버튼에 적용 */
-.kakao_button {
+.kakao_button{
     position: fixed;
     right: 40px;
     width: 42px;
@@ -10,7 +10,6 @@
     border-radius: 10px;
     cursor: pointer;
 }
-
 .top_button {
     position: fixed;
     right: 40px;
