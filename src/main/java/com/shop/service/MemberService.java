@@ -38,10 +38,10 @@ public class MemberService implements UserDetailsService {  // MemberService가 
             throw new UsernameNotFoundException(email);
         }
 
-        return User.builder()   // UserDetail을 구현하고 있는 User 객체를 반환해준다.
-                .username(member.getEmail())    // User 객체를 생성하기 위해 생성자로 회원의 이메일
-                .password(member.getPassword()) // 회원의 패스워드
-                .roles(member.getRole().toString()) // role(역할)을 파라미터로 넘겨준다.
+        return User.builder()   
+                .username(member.getEmail())    
+                .password(member.getPassword()) 
+                .roles(member.getRole().toString()) 
                 .build();
     }
 }
